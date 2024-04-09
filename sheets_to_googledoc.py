@@ -44,7 +44,7 @@ def display_csv_info(csv_data):
     except Exception as e:
         print("Erro ao exibir informações do arquivo:", e)
 def open_link():
-    webbrowser.open("https://docs.google.com/document/d/1rPiZJzjoKoakPUGepZG0wHfQfJBqajC536CI-mCdprw/edit?pli=1")
+    webbrowser.open("link here")
 def cancel():
     global cancelado
     cancelado = True
@@ -83,27 +83,27 @@ def find_line_start(text, line):
         if l.strip().startswith(line):
             return sum(len(lines[j]) + 1 for j in range(i))
 def textDeleteInsert(end_index):
-    text = "\nResumo Operacional | Evento\n" \
-           f"{nome_evento}\n\n\n" \
+    text = "\nExample Text Title\n" \
+           f"{variable}\n\n\n" \
            "Pré-Evento:\n" \
-           f"  \u2022 Visita Técnica:{empty}{empty}{visita_técnica}\n" \
-           f"  \u2022 Entrega da Caçamba:{empty}. . . . . . {entrega_cacamba}\n" \
-           f"  \u2022 Entrega dos Equipamentos:{empty}. {entrega_equips}\n" \
-           f"  \u2022 Implementação dos Equipamentos:. . . . . . . {implem_equips}\n\n\n" \
-           "Equipamentos em comodato:\n" \
-           f"  \u2022 Sacos de lixo (pacote): _______\n" \
-           f"  \u2022 Lixeira (unidade): _______\n" \
-           f"  \u2022 Contêiner (unidade): _______\n" \
-           f"  \u2022 Carro Coletor (unidade): _______\n\n\n" \
-           "Resumo Coletas e Desmobilização:\n" \
-           f"  \u2022 Coleta dos resíduos: \n     \u2022 1º Coleta no dia:{empty}{coleta_residuos}\n\n" \
-           f"  \u2022 Retirada dos equipamentos:{empty}. . {retirada_equips}\n" \
-           f"  \u2022 Horário de Acompanhamento: {empty}{horário_acomp}\n\n" \
-           f"  \u2022 Acompanhamento de Coleta e Desmobilização:\n     \u2022 {coleta_desmob}\n\n\n" \
-           "Pós-Evento:\n" \
-           f"  \u2022 Relatório de impacto: {relatório_impact}\n" \
-           f"  \u2022 Envio de faturamento: {envio_fatura}\n\n\n" \
-           f"Responsável Operacional do Evento: \n{responsável}\n"
+           f"  \u2022 Field:{empty}{empty}{variable}\n" \
+           f"  \u2022 Field:{empty}. . . . . . {variable}\n" \
+           f"  \u2022 Field:{empty}. {variable}\n" \
+           f"  \u2022 Field:. . . . . . . {variable}\n\n\n" \
+           "Title:\n" \
+           f"  \u2022 Field: _______\n" \
+           f"  \u2022 Field: _______\n" \
+           f"  \u2022 Field: _______\n" \
+           f"  \u2022 Field: _______\n\n\n" \
+           "Title:\n" \
+           f"  \u2022 Field: \n     \u2022 text:{empty}{variable}\n\n" \
+           f"  \u2022 Field:{empty}. . {variable}\n" \
+           f"  \u2022 Field: {empty}{variable}\n\n" \
+           f"  \u2022 Field:\n     \u2022 {variable}\n\n\n" \
+           "Title:\n" \
+           f"  \u2022 Field: {variable}\n" \
+           f"  \u2022 Field: {variable}\n\n\n" \
+           f"Title: \n{variable}\n"
 
     requests = [
         {'deleteContentRange': {'range': {
@@ -118,12 +118,12 @@ def textDeleteInsert(end_index):
             }
         }, # Text insert
 
-        # Formatação --------> "Resumo Operacional | Evento"
+        # Formatação --------> "Text to search"
         {
             'updateTextStyle': {
                 'range': {
                     'startIndex': 1,
-                    'endIndex': find_line_start(text, "Resumo Operacional | Evento") + len(
+                    'endIndex': find_line_start(text, "Text to search") + len(
                         "Resumo Operacional | Evento") + 1
                 },
                 'textStyle': {
@@ -140,7 +140,7 @@ def textDeleteInsert(end_index):
             'updateParagraphStyle': {
                 'range': {
                     'startIndex': 1,
-                    'endIndex': find_line_start(text, nome_evento) + len(nome_evento) + 1
+                    'endIndex': find_line_start(text, variable) + len(variable) + 1
                 },
                 'paragraphStyle': {
                     'alignment': 'CENTER'
@@ -149,12 +149,12 @@ def textDeleteInsert(end_index):
             }
         },  # Paragraph style
 
-        # Formatação --------> "Pré-Evento:"
+        # Formatação --------> "Text to search"
         {
             'updateTextStyle': {
                 'range': {
-                    'startIndex': find_line_start(text, "Pré-Evento"),
-                    'endIndex': find_line_start(text, "Pré-Evento") + len("Pré-Evento") + 2
+                    'startIndex': find_line_start(text, "Text to search"),
+                    'endIndex': find_line_start(text, "Text to search") + len("Text to search") + 2
                 },
                 'textStyle': {
                     'bold': True
@@ -163,12 +163,12 @@ def textDeleteInsert(end_index):
             }
         },# Text style
 
-        # Formatação --------> "Equipamentos em comodato:"
+        # Formatação --------> "Text to search:"
         {
             'updateTextStyle': {
                 'range': {
-                    'startIndex': find_line_start(text, "Equipamentos em comodato"),
-                    'endIndex': find_line_start(text, "Equipamentos em comodato") + len(
+                    'startIndex': find_line_start(text, "Text to search"),
+                    'endIndex': find_line_start(text, "Text to search") + len(
                         "Equipamentos em comodato") + 2
                 },
                 'textStyle': {
@@ -178,13 +178,13 @@ def textDeleteInsert(end_index):
             }
         },# Text style
 
-        # Formatação --------> "Resumo Coletas e Desmobilização:"
+        # Formatação --------> "Text to search"
         {
             'updateTextStyle': {
                 'range': {
-                    'startIndex': find_line_start(text, "Resumo Coletas e Desmobilização"),
-                    'endIndex': find_line_start(text, "Resumo Coletas e Desmobilização") + len(
-                        "Resumo Coletas e Desmobilização") + 2
+                    'startIndex': find_line_start(text, "Text to search"),
+                    'endIndex': find_line_start(text, "Text to search") + len(
+                        "Text to search") + 2
                 },
                 'textStyle': {
                     'bold': True
@@ -193,12 +193,12 @@ def textDeleteInsert(end_index):
             }
         }, # Text style
 
-        # Formatação --------> "Pós-Evento:"
+        # Formatação --------> "Text to search"
         {
             'updateTextStyle': {
                 'range': {
-                    'startIndex': find_line_start(text, "Pós-Evento"),
-                    'endIndex': find_line_start(text, "Pós-Evento") + len("Pós-Evento") + 2
+                    'startIndex': find_line_start(text, "Text to search"),
+                    'endIndex': find_line_start(text, "Text to search") + len("Text to search") + 2
                 },
                 'textStyle': {
                     'bold': True
@@ -215,11 +215,11 @@ run = False
 
 # Cria a janela principal
 root = tk.Tk()
-root.title("Musa | Resumo Operacional")
+root.title("Title")
 root.geometry("600x490")
 
 # Logo Musa
-icone_png = Image.open("musa_logo.png")
+icone_png = Image.open("logo.png")
 icone_tk = ImageTk.PhotoImage(icone_png)
 root.iconphoto(True, icone_tk)
 
@@ -228,7 +228,7 @@ file_button = tk.Button(root, text="Selecionar Arquivo", command=select_file)
 file_button.pack(pady=10, padx=10)
 
 # Botão para abrir o link específico
-link_button = tk.Button(root, text="Abrir Resumo Operacional", command=open_link, bg="#D3D6DB")
+link_button = tk.Button(root, text="Abrir link", command=open_link, bg="#D3D6DB")
 link_button.pack(pady=10, padx=10)
 
 # Botão para cancelar
@@ -258,38 +258,35 @@ elif run:
     # ------------------------------------------------------------- VARIÁVEIS TEXTUAIS
     empty = " . . . . . . . . . . . "
 
-    nome_evento = csv_data["data"][0][1]
+    variable = csv_data["data"][0][1]
 
-    # Pré Evento
-    visita_técnica = csv_data["data"][0][4]
-    entrega_cacamba = csv_data["data"][0][5]
-    entrega_equips = csv_data["data"][0][5]
-    implem_equips = csv_data["data"][0][5]
+    # Title
+    variable = csv_data["data"][0][4]
+    variable = csv_data["data"][0][5]
+    variable = csv_data["data"][0][5]
+    variable = csv_data["data"][0][5]
 
-    # Equipamentos em comodato
-    sacos_lixo = "__________"
+    # Title
+    variable = "__________"
 
-    # Resumo coletas e desmobilização
-    coleta_residuos = (f"{csv_data["data"][0][6]} - Entre __ até __")
-    retirada_equips = csv_data["data"][0][7]
-    coleta_desmob = "Nome: __________ - CPF: __________"
-    horário_acomp = "Dia __ - Entre __ até __"
+    # Title
+    variable = (f"{csv_data["data"][0][6]} - Entre __ até __")
+    variable = csv_data["data"][0][7]
+    variable = "Nome: __________ - CPF: __________"
+    variable = "Dia __ - Entre __ até __"
 
-    # Pós Evento
-    relatório_impact = "Previsto para 7 dias úteis após o evento."
-    envio_fatura = ("7 dias úteis após o evento. Caso haja necessidade de especificidades "
-                    "na Nota Fiscal, informar previamente antes do envio das notas.")
+    # Title
+    variable = "Text"
+    variable = ("text")
 
-    # Comunicado
-    responsável = "____________"
-    comunicado = ("Por estarmos operando em São Paulo, uma cidade dinâmica, "
-                  "quaisquer alterações nos horários ou datas devem ser alinhadas com pelo menos "
-                  "24 horas de antecedência para garantir a excelência na operação.")
+    # Title
+    variable = "____________"
+    variable = ("Text")
 
     # ------------------------------------------------------------- MAIN + GOOGLE AUTHS
     # ID do documento e credenciais do Google Cloud
     SERVICE_ACCOUNT_FILE = 'credentials.json'
-    DOCUMENT_ID = '1rPiZJzjoKoakPUGepZG0wHfQfJBqajC536CI-mCdprw'
+    DOCUMENT_ID = 'document id'
 
     # Inicialização e credenciais para o Doc Service
     SCOPES = ['https://www.googleapis.com/auth/documents']
