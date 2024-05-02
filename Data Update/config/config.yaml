@@ -1,0 +1,7 @@
+aws_access_key_id: <YOUR-ACCESS_KEY_ID>
+aws_secret_access_key: <YOUR-SECRET-ACCESS-KEY>
+aws_session_token: <YOUR-SESSION-TOKEN>
+region_name: us-east-1
+database: <YOUR-DATABASE>
+output_s3: <CAMINHO-DO-S3--CONFIGURAÇÕES-ATHEN>
+local_path: <CAMINHO-LOCAL-RESULTADO-QUERY>

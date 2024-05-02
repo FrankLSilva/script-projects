@@ -1,0 +1,6 @@
+UTF_8_ENCODING = 'utf-8'
+PATH_CONFIG = '<CAMINHO-DO-ARQUIVO-CONFIG.YAML>'
+SERVICE_ACCOUNT = '<CAMINHO-ARQUIVO-SERVICE-ACCOUNT.JSON>'
+# É o arquivo .json que voce baixa do google cloud...de preferencia salvar como 'service_account.json'
+SPREADSHEET = '<NAME-SPREADSHEETS>'
+WORKSHEET = '<NAME-WORKSHEET>'
